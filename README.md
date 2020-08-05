@@ -1,4 +1,4 @@
-🏆 Awarded 2nd Place. 2020 JR Fullstack Web Development Project Presentation.
+🏆 Awarded 2nd Place in JR ACADEMY Full-stack Bootcamp 10th Commercial Project Competition.
 
 [Website link](https://rmr101.github.io/campus-frontend/)
 
