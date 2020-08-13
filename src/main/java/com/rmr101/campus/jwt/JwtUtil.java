@@ -1,8 +1,10 @@
 package com.rmr101.campus.jwt;
 
+import com.rmr101.campus.config.JWTConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,9 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtil {
-    private String SECRET_KEY = "RMR101";
+
+    @Autowired
+    JWTConfig jwtConfig;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -28,6 +32,7 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
     private Claims extractAllClaims(String token) {
+        String SECRET_KEY = jwtConfig.getPrivateKey();
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
@@ -42,6 +47,7 @@ public class JwtUtil {
 
     //the jwt will expire after 24 hours
     private String createToken(Map<String, Object> claims, String subject) {
+        String SECRET_KEY = jwtConfig.getPrivateKey();
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
