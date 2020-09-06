@@ -106,9 +106,8 @@ public class TeacherService {
 
     public void updateTeacher(UUID uuid, TeacherUpdateRequest request) {
         //validate uuid
-        this.validateUuid(uuid);
-        Teacher teacher = teacherMapper.teacherUpdateRequestToTeacher(request);
-        teacher.setUuid(uuid);
+        Teacher teacher = this.validateUuid(uuid);
+        teacher.setAvatar(request.getAvatar());
         teacherRepository.save(teacher);
     }
 

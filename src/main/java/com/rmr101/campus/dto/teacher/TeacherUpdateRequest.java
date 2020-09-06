@@ -9,6 +9,5 @@ public class TeacherUpdateRequest {
     @NotNull
     private String avatar;
 
-    @NotNull
     private String title;
 }

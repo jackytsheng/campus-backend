@@ -139,11 +139,8 @@ public class StudentService {
     //Put API
     public void updateStudent(UUID uuid, StudentUpdateRequest request) {
         //validate uuid
-        this.validateUuid(uuid);
-
-        Student student = studentMapper.studentUpdateRequestToStudent(request);
-        student.setUuid(uuid);
-
+        Student student = this.validateUuid(uuid);
+        student.setAvatar(request.getAvatar());
         studentRepository.save(student);
     }
 
