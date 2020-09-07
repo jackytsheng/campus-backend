@@ -42,9 +42,8 @@ Framework:
 - Maven
 
 Testing:
-- Swagger UI
-- Jest & Jest-dom
-- Testing library
+- Junit
+- Mockito
 
 Security:
 - JSON Web Token
@@ -61,6 +60,7 @@ CI/CD:
 Development:
 - Agile (Scrumn)
 - Github flow
+- Swagger UI
 
 #### Database Structure
 ![](./demo/images/Campus_Database.jpg)
